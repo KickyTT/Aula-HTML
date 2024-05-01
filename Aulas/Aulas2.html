@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Site Simples</title>
+<style>
+  /* Estilos CSS para o site */
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+  }
+  header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+  }
+  nav {
+    background-color: #444;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+  }
+  nav a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+  }
+  main {
+    padding: 20px;
+  }
+  footer {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+<!-- Cabeçalho do site -->
+<header>
+<h1>Meu Site Simples</h1>
+</header>
+<!-- Navegação do site -->
+<nav>
+<a href="#home">Home</a>
+<a href="#about">Sobre</a>
+<a href="#services">Serviços</a>
+<a href="#contact">Contato</a>
+</nav>
+<!-- Conteúdo principal do site -->
+<main>
+<!-- Seção Home -->
+<section id="home">
+<h2>Bem-vindo ao Meu Site</h2>
+<p>Este é um exemplo simples de um site em HTML e JavaScript.</p>
+</section>
+<!-- Seção Sobre -->
+<section id="about">
+<h2>Sobre Nós</h2>
+<p>Somos uma equipe dedicada a criar ótimos sites para nossos clientes.</p>
+</section>
+<!-- Seção Serviços -->
+<section id="services">
+<h2>Nossos Serviços</h2>
+<ul>
+<li>Web Design</li>
+<li>Desenvolvimento Front-end</li>
+<li>Hospedagem de Sites</li>
+</ul>
+</section>
+<!-- Seção Contato -->
+<section id="contact">
+<h2>Entre em Contato</h2>
+<form id="contactForm">
+<label for="name">Nome:</label>
+<input type="text" id="name" name="name" placeholder="Digite seu nome" required><br><br>
+<label for="email">Email:</label>
+<input type="email" id="email" name="email" placeholder="Digite seu email" required><br><br>
+<label for="message">Mensagem:</label><br>
+<textarea id="message" name="message" rows="5" placeholder="Digite sua mensagem" required></textarea><br><br>
+<button type="submit">Enviar Mensagem</button>
+</form>
+</section>
+</main>
+<!-- Rodapé do site -->
+<footer>
+<p>&copy; 2024 Meu Site Simples</p>
+</footer>
+<!-- JavaScript para lidar com o formulário de contato -->
+<script>
+    // Função para enviar mensagem ao clicar no botão Enviar Mensagem
+    function enviarMensagem(event) {
+      event.preventDefault(); // Evita o envio padrão do formulário
+      // Captura os valores dos campos do formulário
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const message = document.getElementById('message').value;
+ 
+      // Salva o log em um arquivo de texto
+      const logConteudo = `Nome: ${name}, Email: ${email}, Mensagem: ${message}`;
+      salvarLog(logConteudo);
+      // Exibe uma mensagem de confirmação
+      alert('Mensagem enviada com sucesso!');
+    }
+ 
+    // Função para salvar log em um arquivo de texto
+    function salvarLog(conteudo) {
+      const blob = new Blob([conteudo], { type: 'text/plain' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = 'log.txt';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(url);
+    }
+ 
+    // Adiciona evento de envio ao formulário de contato
+    document.getElementById('contactForm').addEventListener('submit', enviarMensagem);
+</script>
+</body>
+</html>

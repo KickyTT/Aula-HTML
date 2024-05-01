@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<meta charset="UTF-8">
+<title>Site Simples</title>
+<stye>
+ 
+</stye>
+ 
+<body>
+ <header>
+    <h1>Meu Site Simples em JS</h1>
+ </header>
+<nav>
+    <a href="#home">Home</a>
+    <a href="#sobre">Sobre</a>
+    <a href="#servicos">Serviços</a>
+    <a href="#contato">Contato</a>
+</nav>
+<main>
+    <section id="home">
+        <h2>Bem-vindo ao DIMDIM</h2>
+        <p>Este é o site criado para aula 3004</p>
+    </section>
+    <section id="sobre">
+        <h2>Sobre nós</h2>
+        <p>Esse a equipe dedicada ao desenvolvimento do projeto do site</p>
+    </section>
+    <section id="servicos">
+        <h2>Nossos serviços</h2>
+        <label>Web Design</label>
+        <label>Desenvolvimento de Software</label>
+        <label>Manutenção de Computadores</label>
+    </section>
+    <section id="contato">
+        <h2>Entre em contato</h2>
+        <form id="formularioContato">
+            <input type="text" id="nome" name="nome" placeholder="Digite o seu nome" required> <br>
+            <input type="email" id="email" name="email" placeholder="Digite seu email" required> <br>
+            <textarea id="mensagem" name="mensagem" rows="5" placeholder="Digite sua mensagem" required></textarea><br><br>
+            <button type="submit" onclick="enviarMensagem();"> Enviar Mensagem</button>
+        </form>
+    </section>
+</main>
+<footer>
+    Todos direitos reservados a aula 3004 - 2024
+</footer>
+ 
+<script>
+     function enviarMensagem()
+     {
+        const nome = document.getElementById('nome').value;
+        const email = document.getElementById('email').value;
+        const mensagem = document.getElementById('mensagem').value;
+ 
+        const LogSite = 'Nome do Cliente: ' + nome + ' Email do Cliente: '  + email + ' Mensagem do Cliente: ' +  mensagem;
+       
+        const blob = new Blob([LogSite], { type: 'text/plain'  }) ;
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href= url;
+        link.download = 'log3004.txt';
+        document.body.appendChild(link);
+        link.click();
+ 
+        alert(LogSite);
+     }
+</script>
+ 
+</body>
+ 
+</html>
